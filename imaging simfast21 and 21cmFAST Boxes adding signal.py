@@ -36,7 +36,7 @@ for i in os.listdir(os.getcwd()):
                 print ' ****************** THE BEGINING OF WORKING ON NEW FILE***********************'
                 print filename
                 print '*************creating directory***************'
-                location = '../the_'+ os.path.basename(os.path.normpath(os.getcwd()))+ 'images/'
+                location = '../only_'+ os.path.basename(os.path.normpath(os.getcwd()))+ 'pictures'
 
                 if not os.path.exists(location):
                         os.makedirs(location)
