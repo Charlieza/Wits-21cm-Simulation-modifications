@@ -5,7 +5,7 @@ import os
 import csv
 
 #This code takes a spectrum file and making a signal out of it at various
-#redshifts and adds the signal to a selta_T output box from 21cm FAST
+#redshifts and adds the signal to a delta_T output box from 21cm FAST
 
 ###### Lets start by bringing in the spectrum #######
 
@@ -35,8 +35,8 @@ for i in os.listdir(os.getcwd()):
                 filename = i
                 print ' ****************** THE BEGINING OF WORKING ON NEW FILE***********************'
                 print filename
-                print '*************creating new directory***************'
-                location = '/Volumes/CHARLES/from_z_=5_to_z=1100/Boxes/the_'+ os.path.basename(os.path.normpath(os.getcwd()))+ '-folder-dat-files-images/'
+                print '*************creating directory***************'
+                location = '../the_'+ os.path.basename(os.path.normpath(os.getcwd()))+ 'images/'
 
                 if not os.path.exists(location):
                         os.makedirs(location)
@@ -81,6 +81,9 @@ for i in os.listdir(os.getcwd()):
                     fd.close()
                     return data
                 ff =  readslice(256)
+                
+                
+                #Add the box slices we another(fs) and readslice(ff)
 
                 fz = ff + fs
                 v = ['f = ', str(f) , ' MHz ', ' and z = ', str(z), ' signal_T = ', str(x), ' mK']
