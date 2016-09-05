@@ -25,7 +25,7 @@ print freq
 print redshift
 print mod
 
-wd = '/Volumes/CHARLES/from_z_=5_to_z=1100/Boxes'
+wd = '../Boxes'
 os.chdir(wd)
 
 #Lets work on the Slice and other signal
