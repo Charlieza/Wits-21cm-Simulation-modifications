@@ -36,9 +36,9 @@ for i in os.listdir(os.getcwd()):
 
                 filename = i
                 print ' ****************** THE BEGINING OF WORKING ON NEW FILE***********************'
-                #print filename
+                print ('The current file: '+filename)
                 print '*************creating new directory***************'
-                location = '../only_'+ os.path.basename(os.path.normpath(os.getcwd()))+ 'pictures'
+                location = '../only_'+ os.path.basename(os.path.normpath(os.getcwd()))+ 'pictures/'
 
                 if not os.path.exists(location):
                         os.makedirs(location)
@@ -89,9 +89,9 @@ for i in os.listdir(os.getcwd()):
 
                         #The rest is just imaging
                         
-                        v = ['f = ', str(f) , ' MHz ', ' and z = ', str(z), ' signal_T = ', str(x), ' mK']
-                        v2= ['f_=_', str(f) , '_MHz_', '_and_z =_', str(z),'signal_x=', str(x),'.png']
-                        print 'Outputting Box signal only'
+                        v = ['f = ', str(f) , ' MHz ', ' z = ', str(z), ' with signal_T = ', str(x), ' mK']
+                        v2= ['f_=_', str(f) , '_MHz_', '_and_z =_', str(z),'_signal_x=', str(x),'.png']
+                        print 'Outputting Simulation Box'
                         plt.title('21cmFAST BOX slice at ' + ''.join(v) )
                         plt.xlabel('Mpc')
                         plt.ylabel('Mpc')
@@ -101,23 +101,23 @@ for i in os.listdir(os.getcwd()):
                         #plt.show()
                         plt.close()
                         
-                        print 'Outputting Just masked region'
-                        plt.title('masked array signal at ' + ''.join(v))
+                        print 'Outputting only masked region'
+                        plt.title('masked signal without foreground at ' + ''.join(v))
                         plt.xlabel('Mpc')
                         plt.ylabel('Mpc')
                         plt.imshow(fs[100,:,:],cmap = cm.jet)
                         plt.colorbar()
-                        plt.savefig(location + 'masked_array_at'+''.join(v2), bbox_inches='tight')
+                        plt.savefig(location + 'masked_signal_at_'+''.join(v2), bbox_inches='tight')
                         #plt.show()
                         plt.close()
                         
                         print 'Outputting Box with signal and masked region '
-                        plt.title('21cmFAST Box Slice with added signal at ' + ''.join(v))
+                        plt.title('21cmFAST Box Slice with signal at ' + ''.join(v))
                         plt.xlabel('Mpc')
                         plt.ylabel('Mpc')
                         plt.imshow(fz[100,:,:],cmap = cm.jet)
                         plt.colorbar()
-                        plt.savefig(location + 'box_plus_masked_at' +''.join(v2), bbox_inches='tight')
+                        plt.savefig(location + 'box_plus_masked_at_' +''.join(v2), bbox_inches='tight')
                         #plt.show()
                         plt.close()
                         
