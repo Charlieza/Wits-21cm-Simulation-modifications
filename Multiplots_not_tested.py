@@ -10,6 +10,7 @@ import csv
 #This version picks out only redshifts in the spectrum files
 
 #This has the foreground included#
+#On this version we make all plots on same image
 
 ###### Lets start by bringing in the spectrum #######
 
