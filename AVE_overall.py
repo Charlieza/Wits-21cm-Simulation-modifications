@@ -137,7 +137,9 @@ for i in os.listdir(os.getcwd()):
                             plt.ylabel('Mpc')
                             plt.imshow(fc[118,:,:], cmap='jet')
                             plt.colorbar()
-
+                            
+                            plt.savefig(location + 'All_plots_at_' +''.join(v2), bbox_inches='tight')
+                            plt.close()
                             break
                         else:
                             x=0
