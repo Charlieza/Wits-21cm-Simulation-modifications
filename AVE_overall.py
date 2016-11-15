@@ -83,8 +83,8 @@ for i in os.listdir(os.getcwd()):
 
                         fc = fa -fb
 
-                        a = np.mean(ff)
-                        b = np.std(ff)
+                        a = np.mean(fb)
+                        b = np.std(fb)
                         c = np.mean(fc)
                         d = np.std(fc)
                         print ('ave is    '+str('%06.2f'%c))
