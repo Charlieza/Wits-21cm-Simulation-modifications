@@ -29,13 +29,12 @@ print freq
 print redshift
 print mod
 
-wd = '/mnt/storage1/simulations/charles/21cmFAST/256simulation/Boxes'
+wd = '/mnt/storage1/simulations/charles/data/hunds'
 os.chdir(wd)
 
 #Lets work on the Slice and other signal
 for i in os.listdir(os.getcwd()):
         if i.startswith('delta_T_v3_no_halos'):
-
                 filename = i
                 print ' ****************** THE BEGINING OF WORKING ON NEW FILE***********************'
                 print ('The current file: '+filename)
@@ -44,13 +43,13 @@ for i in os.listdir(os.getcwd()):
 
                 if not os.path.exists(location):
                     os.makedirs(location)
-
-
+                    
+                    print 'Hi I am here'
                     
                     z = float(filename[21:-86])
                     print (str('%06.2f'%z))
-
-
+                    
+                    
                     print ('redshift from filename is: ' + str('%06.2f'%z))
                     fi = float(1420/(1+z))
                     f = float("{0:.2f}".format(fi))
@@ -143,6 +142,6 @@ for i in os.listdir(os.getcwd()):
                             break
                         else:
                             x=0
-
-                        print ( 'x, the modification is:' +str(x))
-                        print ' *****************Done !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ******************'
+                            
+                            print ( 'x, the modification is:' +str(x))
+                            print ' *****************Done !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ******************'
