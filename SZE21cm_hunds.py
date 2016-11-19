@@ -71,8 +71,7 @@ for i in os.listdir(os.getcwd()):
                     def Unperturbed(ndim):
                         #create a onesarray
                         shape = (ndim, ndim, ndim)
-                        Io_st = 2*(((k*To)**3)/((h*c)**2))*((p**3)/((np.exp(p))-1))*(10**26)
-                        array = np.ones(shape)
+                        Io_st = (2*(((k*To)**3)/((h*c)**2))*((p**3)/((np.exp(p))-1))*(10**26))/(8.46*(10**-8))                        array = np.ones(shape)
                         Io_st_array = array * Io_st
                         return Io_st_array
                     fa = Unperturbed(256)
@@ -84,7 +83,7 @@ for i in os.listdir(os.getcwd()):
                         fd = open(filename, 'rb')
                         print filename
                         data = np.fromfile(file=fd, dtype= np.dtype('f4')).reshape(shape)
-                        dI = 2*(k*(f**2))*(1/(c**2))*((data)*(10**(-3)))*(10**26)
+                        dI = (2*(k*(f**2))*(1/(c**2))*((data)*(10**(-3)))*(10**26))/(8.46*(10**-8))
                         fd.close()
                         return dI
                     fb =  readslice(256)
