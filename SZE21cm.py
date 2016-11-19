@@ -84,7 +84,8 @@ for i in os.listdir(os.getcwd()):
                         fd = open(filename, 'rb')
                         print filename
                         data = np.fromfile(file=fd, dtype= np.dtype('f4')).reshape(shape)
-                        dI = (2*(k*(f**2))*(1/(c**2))*((data)*(10**(-3)))*(10**26))/(8.46*(10**-8))                        fd.close()
+                        dI = (2*(k*(f**2))*(1/(c**2))*((data)*(10**(-3)))*(10**26))/(8.46*(10**-8))                        
+                        fd.close()
                         return dI
                     fb =  readslice(256)
 
