@@ -18,7 +18,7 @@ To = 2.725
 #The comptonised spectrum
 
 
-f = open('paolocmbcompt_21cmdt6_10kev_1em3.csv', 'rb')
+f = open('2paolocmbcompt_21cmdt6_10kev_1em3.csv', 'rb')
 reader = csv.reader(f)
 freq = []
 redshift = []
