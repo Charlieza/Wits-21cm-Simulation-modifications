@@ -71,7 +71,8 @@ for i in os.listdir(os.getcwd()):
                     def Unperturbed(ndim):
                         #create a onesarray
                         shape = (ndim, ndim, ndim)
-                        Io_st = (2*(((k*To)**3)/((h*c)**2))*((p**3)/((np.exp(p))-1))*(10**26))/(8.46*(10**-8))                        array = np.ones(shape)
+                        Io_st = (2*(((k*To)**3)/((h*c)**2))*((p**3)/((np.exp(p))-1))*(10**26))/(8.46*(10**-8))                        
+                        array = np.ones(shape)
                         Io_st_array = array * Io_st
                         return Io_st_array
                     fa = Unperturbed(256)
