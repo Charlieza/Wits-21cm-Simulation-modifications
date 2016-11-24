@@ -94,7 +94,7 @@ for i in os.listdir(os.getcwd()):
                             #Working through redshifts
                             if redshift[i] == z:
                                 x = mod[i]
-                                I_mod=x
+                                I_mod=(x*(10**(-3)))
                                 #p defined below is x in the paper mentioned
                                 
                                 p = ((h*f)/(k*To))
@@ -112,7 +112,7 @@ for i in os.listdir(os.getcwd()):
                                     print 'creating unperturbed CMB box at this frequency..........'
 
                                     #The unperturbed CMB
-                                    Io_st = (2*(((k*To)**3)/((h*c)**2))*((p**3)/((np.exp(p))-1))*(10**26)*(1.18*(10**-7)))*((10**(3))*(np.ones(shape)))
+                                    Io_st = (2*(((k*To)**3)/((h*c)**2))*((p**3)/((np.exp(p))-1))*(10**26)*(1.18*(10**-7)))*(np.ones(shape))
 
                                     print 'Done !!!!!!!'
 
@@ -122,7 +122,7 @@ for i in os.listdir(os.getcwd()):
 
                                     fd = open(filename, 'rb')
 
-                                    dI = (((2*(k*(f**2))/(c**2)))*(10**26)*(1.18*(10**-7)))*(np.fromfile(file=fd, dtype= np.dtype('f4')).reshape(shape))
+                                    dI = (((2*(k*(f**2))/(c**2)))*(10**26)*(1.18*(10**-7)))*(10**-3)*(np.fromfile(file=fd, dtype= np.dtype('f4')).reshape(shape))
 
                                     bc = dI + Io_st
                                     print 'masking box with cluster'
@@ -141,7 +141,7 @@ for i in os.listdir(os.getcwd()):
                                 def Unperturbed_CMB(ndim):
                                     #create a onesarray
                                     shape = (ndim, ndim, ndim)
-                                    Io_st = (2*(((k*To)**3)/((h*c)**2))*((p**3)/((np.exp(p))-1))*(10**26)*(1.18*(10**-7)))*((10**(3))*(np.ones(shape)))
+                                    Io_st = (2*(((k*To)**3)/((h*c)**2))*((p**3)/((np.exp(p))-1))*(10**26)*(1.18*(10**-7)))*(np.ones(shape))
                                     array = (np.ones(shape))
                                     Io_st_array = array * Io_st
                                     return Io_st_array
@@ -155,7 +155,7 @@ for i in os.listdir(os.getcwd()):
                                     shape = (ndim,ndim,ndim)
                                     fd = open(filename, 'rb')
                                     print filename
-                                    dI = (((2*(k*(f**2))/(c**2)))*(10**26)*(1.18*(10**-7))*(np.fromfile(file=fd, dtype= np.dtype('f4')).reshape(shape)))
+                                    dI = (((2*(k*(f**2))/(c**2)))*(10**26)*(1.18*(10**-7))*(10**-3)*(np.fromfile(file=fd, dtype= np.dtype('f4')).reshape(shape)))
                                     fd.close()
                                     return dI
                                 fb =  readslice(256)
