@@ -122,7 +122,7 @@ for i in os.listdir(os.getcwd()):
 
                                     fd = open(filename, 'rb')
 
-                                    dI = (((2*(k*(f**2))/(c**2)))*(10**26)*(1.18*(10**-7))*(10**3))*(np.fromfile(file=fd, dtype= np.dtype('f4')).reshape(shape))
+                                    dI = (((2*(k*(f**2))/(c**2)))*(10**26)*(1.18*(10**-7)))*(np.fromfile(file=fd, dtype= np.dtype('f4')).reshape(shape))
 
                                     bc = dI + Io_st
                                     print 'masking box with cluster'
@@ -142,7 +142,7 @@ for i in os.listdir(os.getcwd()):
                                     #create a onesarray
                                     shape = (ndim, ndim, ndim)
                                     Io_st = (2*(((k*To)**3)/((h*c)**2))*((p**3)/((np.exp(p))-1))*(10**26)*(1.18*(10**-7)))*((10**(3))*(np.ones(shape)))
-                                    array = ((10**(3))*(np.ones(shape)))
+                                    array = (np.ones(shape))
                                     Io_st_array = array * Io_st
                                     return Io_st_array
                                 fa = Unperturbed_CMB(256)
@@ -156,7 +156,7 @@ for i in os.listdir(os.getcwd()):
                                     fd = open(filename, 'rb')
                                     print filename
                                     data = np.fromfile(file=fd, dtype= np.dtype('f4')).reshape(shape)
-                                    dI = (((2*(k*(f**2))/(c**2)))*(10**26)*(1.18*(10**-7))*(10**3))*(np.fromfile(file=fd, dtype= np.dtype('f4')).reshape(shape))
+                                    dI = (((2*(k*(f**2))/(c**2)))*(10**26)*(1.18*(10**-7))*(np.fromfile(file=fd, dtype= np.dtype('f4')).reshape(shape))
                                     fd.close()
                                     return dI
                                 fb =  readslice(256)
@@ -170,7 +170,7 @@ for i in os.listdir(os.getcwd()):
                                 SZEI =  box_cluster - background
 
                                 print 'Now getting you a good temperature box'
-                                SZET = (SZEI*(10**(-26)))*(c**2)*(1/((2*k*(f**2))))*(1.18*(10**7))
+                                SZET = (SZEI*(10**(-26)))*(c**2)*(1/((2*k*(f**2))))*(1.18*(10**7))*(10**3)
 
                                 print 'Calculating cluster temperature'
                                 a =np.mean(SZET[118:138,118:138,118:138])
