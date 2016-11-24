@@ -21,7 +21,7 @@ import glob
 k = 1.32*(10**(-23)) #Boltzman constant
 h = 6.63*(10**(-34)) #Planck constant
 c = 3.00*(10**(8)) #speed of light
-To = 2.725*(10**3) #CMB Temperature in Kelvin
+To = 2.725 #CMB Temperature in Kelvin
 
 #Bring in first the comptonised spectrum and put this into three arrays
 
