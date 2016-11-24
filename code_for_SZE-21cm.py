@@ -60,7 +60,7 @@ for i in os.listdir(os.getcwd()):
                 #Create the directory where images and and output data will be stored
                 
                 print '*************creating new directory***************'
-                location = 'home/charlest/Desktop/work/pics/'
+                location = '/home/charlest/Desktop/work/pics/'
 
                 if not os.path.exists(location):
                         os.makedirs(location)
