@@ -21,7 +21,7 @@ import glob
 k = 1.32*(10**(-23)) #Boltzman constant
 h = 6.63*(10**(-34)) #Planck constant
 c = 3.00*(10**(8)) #speed of light
-To = 2.725 #CMB Temperature in Kelvin
+To = 2.725*(10**3) #CMB Temperature in Kelvin
 
 #Bring in first the comptonised spectrum and put this into three arrays
 
@@ -94,7 +94,7 @@ for i in os.listdir(os.getcwd()):
                             #Working through redshifts
                             if redshift[i] == z:
                                 x = mod[i]
-                                I_mod=(x*(10**(-3)))
+                                I_mod=x
                                 #p defined below is x in the paper mentioned
                                 
                                 p = ((h*f)/(k*To))
@@ -122,7 +122,7 @@ for i in os.listdir(os.getcwd()):
 
                                     fd = open(filename, 'rb')
 
-                                    dI = (((2*(k*(f**2))/(c**2)))*(10**26)*(1.18*(10**-7)))*(10**-3)*(np.fromfile(file=fd, dtype= np.dtype('f4')).reshape(shape))
+                                    dI = (((2*(k*(f**2))/(c**2)))*(10**26)*(1.18*(10**-7)))*(np.fromfile(file=fd, dtype= np.dtype('f4')).reshape(shape))
 
                                     bc = dI + Io_st
                                     print 'masking box with cluster'
@@ -155,7 +155,7 @@ for i in os.listdir(os.getcwd()):
                                     shape = (ndim,ndim,ndim)
                                     fd = open(filename, 'rb')
                                     print filename
-                                    dI = (((2*(k*(f**2))/(c**2)))*(10**26)*(1.18*(10**-7))*(10**-3)*(np.fromfile(file=fd, dtype= np.dtype('f4')).reshape(shape)))
+                                    dI = (((2*(k*(f**2))/(c**2)))*(10**26)*(1.18*(10**-7))*(np.fromfile(file=fd, dtype= np.dtype('f4')).reshape(shape)))
                                     fd.close()
                                     return dI
                                 fb =  readslice(256)
