@@ -75,81 +75,75 @@ for i in os.listdir(os.getcwd()):
                 
                 #Now this is the part we bring in the other patch of the sky that does not contain the simulated cluster
 
-                s = '/home/charles/Documents/simulation_test_folder/data2/hunds'
-                os.chdir(s)
-                for j in os.listdir(os.getcwd()):
-                    if j.startswith('delta_T_v3_no_halos_z'+str('%06.2f'%(z))):
-                        myfile = j
 
-                        print ('The other patch of the sky is from : '+myfile)
 
-                        print ('The redshift from filename is: ' + str(z))
-                        fi = float(1420/(1+z))
-                        v = float("{0:.2f}".format(fi))
-                        f = (v*(10**6))
-                        print ('frequency in MHz is:' + str(v))
+                print ('The redshift from filename is: ' + str(z))
+                fi = float(1420/(1+z))
+                v = float("{0:.2f}".format(fi))
+                f = (v*(10**6))
+                print ('frequency in MHz is:' + str(v))
+                
+                #Lets pick only the boxes at the redshifts defined in the spectrum file
+
+                for i in range (len(redshift)):
+                    #Working through redshifts
+                    if redshift[i] == z:
+                        x = mod[i]
+                        I_mod=x
+                        #p defined below is x in the paper mentioned
                         
-                        #Lets pick only the boxes at the redshifts defined in the spectrum file
-
-                        for i in range (len(redshift)):
-                            #Working through redshifts
-                            if redshift[i] == z:
-                                x = mod[i]
-                                I_mod=x
-                                #p defined below is x in the paper mentioned
-                                
-                                p = ((h*f)/(k*To))
-                                print ( 'x, the modification is:' +str(x))
+                        p = ((h*f)/(k*To))
+                        print ( 'x, the modification is:' +str(x))
 
 
-                                #This is a box with the cluster signal, the unperturbed CMB, and a normal box
+                        #This is a box with the cluster signal, the unperturbed CMB, and a normal box
 
 
-                                def box_with_cluster(ndim):
-                                    shape = (ndim, ndim, ndim)
+                        def box_with_cluster(ndim):
+                            shape = (ndim, ndim, ndim)
 
-                                    print 'Now working with box with cluster...........'
+                            print 'Now working with box with cluster...........'
 
-                                    print 'creating unperturbed CMB box at this frequency..........'
+                            print 'creating unperturbed CMB box at this frequency..........'
 
-                                    #The unperturbed CMB
-                                    Io_st = (2*(((k*To)**3)/((h*c)**2))*((p**3)/((np.exp(p))-1))*(10**26)*(1.18*(10**-7)))*(np.ones(shape))
+                            #The unperturbed CMB
+                            Io_st = (2*(((k*To)**3)/((h*c)**2))*((p**3)/((np.exp(p))-1))*(10**26)*(1.18*(10**-7)))*(np.ones(shape))
 
-                                    print 'Done !!!!!!!'
+                            print 'Done !!!!!!!'
 
-                                    print 'Now bringing in the box.....'
+                            print 'Now bringing in the box.....'
 
-                                    #The Box we want to work with
+                            #The Box we want to work with
 
-                                    fd = open('/home/charles/Documents/simulation_test_folder/data/hunds/'+filename, 'rb')
+                            fd = open('/home/charles/Documents/simulation_test_folder/data/hunds/'+filename, 'rb')
 
-                                    dI = (((2*(k*(f**2))/(c**2)))*(10**(-3))*(10**26)*(1.18*(10**-7)))*(np.fromfile(file=fd, dtype= np.dtype('f4')).reshape(shape))
+                            dI = (((2*(k*(f**2))/(c**2)))*(10**(-3))*(10**26)*(1.18*(10**-7)))*(np.fromfile(file=fd, dtype= np.dtype('f4')).reshape(shape))
 
-                                    bc = dI + Io_st
-                                    return bc
-                                    
-                                    print 'masking box with cluster'
-                                
-                                box = box_with_cluster(256)
+                            bc = dI + Io_st
+                            return bc
+                            
+                            print 'masking box with cluster'
+                        
+                        box = box_with_cluster(256)
 
 
-                                print 'Calculating cluster temperature'
-                                a =np.mean(box)
-                                print 'Outputting values to file'
+                        print 'Calculating cluster temperature'
+                        a =np.mean(box)
+                        print 'Outputting values to file'
 
-                                file = open(location +'SZE-21cmSpec' +str(x) +'.txt', 'w')
-                                file.write(str(z))
-                                file.write(' '+str(v))
-                                file.write(' '+str(x))
-                                file.write(' '+str(a))
-                                file.close()
+                        file = open(location +'SZE-21cmSpec' +str(x) +'.txt', 'w')
+                        file.write(str(z))
+                        file.write(' '+str(v))
+                        file.write(' '+str(x))
+                        file.write(' '+str(a))
+                        file.close()
 
-                                break
-                            else:
-                                x=0
-                                print 'Now I hope this is gonna work and we are done'
+                        break
+                    else:
+                        x=0
+                        print 'Now I hope this is gonna work and we are done'
 
 
 
 
-                                
+                        
